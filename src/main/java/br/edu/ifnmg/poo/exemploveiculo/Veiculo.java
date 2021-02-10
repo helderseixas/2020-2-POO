@@ -12,24 +12,22 @@ package br.edu.ifnmg.poo.exemploveiculo;
 public class Veiculo {
     private static int totalVeiculos = 0;
     
-    //Atributos
-    private String tipo;
+    //Atributos    
     private String modelo;
     private String marca;
     private int ano;
     private double kilometragem;
     private String motorista;
     
-    public Veiculo(String tipo, String modelo, String marca, int ano, double kilometragem){
-        this(tipo, modelo, marca, ano, kilometragem, null);
+    public Veiculo(String modelo, String marca, int ano, double kilometragem){
+        this(modelo, marca, ano, kilometragem, null);
     }
     
-    public Veiculo(String tipo, String modelo, String marca, int ano){
-        this(tipo, modelo, marca, ano, 0);
+    public Veiculo(String modelo, String marca, int ano){
+        this(modelo, marca, ano, 0);
     }
     
-    public Veiculo(String tipo, String modelo, String marca, int ano, double kilometragem, String motorista){
-        this.tipo = tipo;
+    public Veiculo(String modelo, String marca, int ano, double kilometragem, String motorista){        
         this.modelo = modelo;
         this.marca = marca;
         this.ano = ano;        
@@ -57,11 +55,7 @@ public class Veiculo {
     
     public static int getTotalVeiculos(){
         return totalVeiculos;
-    }
-    
-    public String getTipo(){
-        return this.tipo;
-    }
+    }    
 
     public String getModelo() {
         return modelo;
