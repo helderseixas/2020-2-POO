@@ -42,5 +42,28 @@ public class Carro extends Veiculo{
         return volumeMaximoCarroceria;
     }
     
+    @Override
+    public void deslocar(double kilometragemDeslocamento, 
+            String motorista, 
+            int quantidadePassageiros, 
+            double volumeCarga){
+        if(quantidadePassageiros > this.capacidadeMaximaPassageiros){
+            quantidadePassageiros = this.capacidadeMaximaPassageiros;
+        }
+        super.deslocar(kilometragemDeslocamento, 
+                motorista, 
+                quantidadePassageiros, 
+                volumeCarga);
+    }
+    
+    @Override
+    public void deslocar(double kilometragemDeslocamento, 
+        int quantidadePassageiros, 
+        double volumeCarga){
+        if(quantidadePassageiros > this.capacidadeMaximaPassageiros){
+            quantidadePassageiros = this.capacidadeMaximaPassageiros;
+        }
+        super.deslocar(kilometragemDeslocamento, quantidadePassageiros, volumeCarga);
+    }
     
 }

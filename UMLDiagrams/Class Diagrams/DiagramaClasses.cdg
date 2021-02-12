@@ -2,7 +2,7 @@
 
 <ClassDiagram name="DiagramaClasses">
   <ClassDiagramComponents>
-    <Class name="Veiculo" package="" visibility="public" xPosition="413.0" yPosition="8.0">
+    <Class name="Veiculo" package="" visibility="public" isAbstract="true" xPosition="475.0" yPosition="35.0">
       <Fields>
         <Field name="marca" type="String" visibility="private"/>
         <Field name="modelo" type="String" visibility="private"/>
@@ -16,7 +16,7 @@
         <Method name="deslocar" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Carro" package="" visibility="public" xPosition="41.0" yPosition="219.0">
+    <Class name="Carro" package="" visibility="public" xPosition="41.0" yPosition="220.0">
       <Fields>
         <Field name="capacidadeMaximaPassageiros" type="int" visibility="private"/>
         <Field name="volumeMaximoPortaMalas" type="double" visibility="private"/>
@@ -41,7 +41,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Onibus" package="" visibility="public" xPosition="649.0" yPosition="206.0">
+    <Class name="Onibus" package="" visibility="public" xPosition="754.0" yPosition="208.0">
       <Fields>
         <Field name="capacidadeMaximaPassageiros" type="int" visibility="private"/>
         <Field name="volumeMaximoPortaMalas" type="double" visibility="private"/>
@@ -50,11 +50,23 @@
       <Constructors/>
       <Methods/>
     </Class>
+    <Class name="Deslocamento" package="" visibility="public" xPosition="30.0" yPosition="8.0">
+      <Fields>
+        <Field name="dataDesolocamento" type="Date" visibility="private"/>
+        <Field name="motorista" type="String" visibility="private"/>
+        <Field name="kilometragem" type="double" visibility="private"/>
+        <Field name="quantidadePassageiros" type="int" visibility="private"/>
+        <Field name="volumeCarga" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="Carro" target="Veiculo"/>
-    <IsRelation name="is" source="Moto" target="Veiculo"/>
     <IsRelation name="is" source="Onibus" target="Veiculo"/>
+    <HasRelation name="historicoDeslocamentos" source="Veiculo" target="Deslocamento" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <IsRelation name="is" source="Moto" target="Veiculo"/>
     <IsRelation name="is" source="Caminhao" target="Veiculo"/>
+    <IsRelation name="is" source="Carro" target="Veiculo"/>
   </ClassDiagramRelations>
 </ClassDiagram>

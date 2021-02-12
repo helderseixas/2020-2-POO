@@ -5,11 +5,14 @@
  */
 package br.edu.ifnmg.poo.exemploveiculo;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author helder
  */
-public class Veiculo {
+public abstract class Veiculo {
     private static int totalVeiculos = 0;
     
     //Atributos    
@@ -18,6 +21,7 @@ public class Veiculo {
     private int ano;
     private double kilometragem;
     private String motorista;
+    private ArrayList<Deslocamento> historicoDeslocamentos;
     
     public Veiculo(String modelo, String marca, int ano, double kilometragem){
         this(modelo, marca, ano, kilometragem, null);
@@ -38,19 +42,38 @@ public class Veiculo {
         }
         this.motorista = motorista;
         
+        this.historicoDeslocamentos = new ArrayList<>();
+        
         totalVeiculos++;
     }
     
     //Métodos
-    public void deslocar(double kilometragemDeslocamento){
+    public void deslocar(double kilometragemDeslocamento, 
+            int quantidadePassageiros, 
+            double volumeCarga){
         if(kilometragemDeslocamento > 0){
             this.kilometragem += kilometragemDeslocamento;
-        }
+            
+            Date dataDeslocamento = new Date();
+        
+            Deslocamento deslocamento = new Deslocamento(dataDeslocamento, 
+                this.motorista, 
+                kilometragemDeslocamento, 
+                quantidadePassageiros, 
+                volumeCarga);
+            
+            this.historicoDeslocamentos.add(deslocamento);
+        }                
     }
     
-    public void deslocar(double kilometragemDeslocamento, String motorista){
+    public void deslocar(double kilometragemDeslocamento, 
+            String motorista, 
+            int quantidadePassageiros, 
+            double volumeCarga){
         this.motorista = motorista;
-        this.deslocar(kilometragemDeslocamento);
+        this.deslocar(kilometragemDeslocamento,
+                quantidadePassageiros,
+                volumeCarga);
     }
     
     public static int getTotalVeiculos(){
@@ -79,5 +102,9 @@ public class Veiculo {
     
     public String getMotorista(){
         return this.motorista;
+    }
+    
+    public ArrayList<Deslocamento> getHistoricoDeslocamentos(){
+        return this.historicoDeslocamentos;
     }
 }
