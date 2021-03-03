@@ -12,4 +12,17 @@ package br.edu.ifnmg.poo.banco.modelo;
 public class PessoaFisica extends Cliente{
     private double salario;
     
+    public PessoaFisica(String nome, String senha, double salario){
+        super(nome, senha);
+        if(salario >= 0){
+            this.salario = salario;        
+        }else{
+            this.salario = 0;
+        }
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+    
 }

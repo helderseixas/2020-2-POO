@@ -11,5 +11,9 @@ package br.edu.ifnmg.poo.banco.modelo;
  */
 public class PessoaJuridica extends Cliente{
     private char porte;
+
+    public PessoaJuridica(String nome, String senha) {
+        super(nome, senha);
+    }
     
 }
