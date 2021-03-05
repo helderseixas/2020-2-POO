@@ -10,6 +10,10 @@ package br.edu.ifnmg.poo.banco.modelo;
  * @author helder
  */
 public class ContaCorrente extends Conta{
+
+    public ContaCorrente(String numero, Cliente cliente, double saldo) {
+        super(numero, cliente, saldo);
+    }
     
     
 }

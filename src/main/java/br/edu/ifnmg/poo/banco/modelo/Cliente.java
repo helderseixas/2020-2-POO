@@ -22,6 +22,9 @@ public abstract class Cliente {
         return nome;
     }
     
+    public boolean verificarSenha(String senha){
+        return this.senha.equals(senha);
+    }
     
     
 }

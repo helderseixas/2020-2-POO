@@ -11,5 +11,9 @@ package br.edu.ifnmg.poo.banco.modelo;
  */
 public class ContaPoupanca extends Conta{
     private int diaAniversario;
+
+    public ContaPoupanca(String numero, Cliente cliente, double saldo) {
+        super(numero, cliente, saldo);
+    }
     
 }

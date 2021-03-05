@@ -14,4 +14,24 @@ public abstract class Conta {
     private double saldo;
     private Cliente cliente;
     
+    public Conta(String numero, Cliente cliente, double saldo){
+        this.numero = numero;
+        this.cliente = cliente;
+        this.saldo = saldo;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    
+    
+    
 }
