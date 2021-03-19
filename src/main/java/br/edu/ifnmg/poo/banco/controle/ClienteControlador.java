@@ -7,6 +7,7 @@ package br.edu.ifnmg.poo.banco.controle;
 
 import br.edu.ifnmg.poo.banco.dados.ClienteDAO;
 import br.edu.ifnmg.poo.banco.modelo.Cliente;
+import br.edu.ifnmg.poo.excecoes.ClienteNaoEncontradoException;
 
 /**
  *

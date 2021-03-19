@@ -6,6 +6,7 @@
 package br.edu.ifnmg.poo.banco.dados;
 
 import br.edu.ifnmg.poo.banco.modelo.Cliente;
+import br.edu.ifnmg.poo.excecoes.ClienteNaoEncontradoException;
 import java.util.ArrayList;
 
 /**
@@ -28,6 +29,11 @@ public class ClienteDAO {
                 break;
             }
         }
+        if(cliente == null){
+            ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
+            throw e;
+        }
+        
         return cliente;
     }
     
