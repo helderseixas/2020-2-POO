@@ -8,6 +8,8 @@ package br.edu.ifnmg.poo.banco.dados;
 import br.edu.ifnmg.poo.banco.modelo.Cliente;
 import br.edu.ifnmg.poo.excecoes.ClienteNaoEncontradoException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -15,20 +17,14 @@ import java.util.ArrayList;
  */
 public class ClienteDAO {
     
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static Map<String,Cliente> clientes = new HashMap<>();
     
     public static void adicionarCliente(Cliente cliente){
-        clientes.add(cliente);
+        clientes.put(cliente.getNome(), cliente);
     }
 
     public static Cliente buscarCliente(String nomeCliente) {
-        Cliente cliente = null;
-        for(Cliente clienteEmPesquisa : clientes){
-            if(clienteEmPesquisa.getNome().equals(nomeCliente)){
-                cliente = clienteEmPesquisa;
-                break;
-            }
-        }
+        Cliente cliente = clientes.get(nomeCliente);
         if(cliente == null){
             ClienteNaoEncontradoException e = new ClienteNaoEncontradoException();
             throw e;
