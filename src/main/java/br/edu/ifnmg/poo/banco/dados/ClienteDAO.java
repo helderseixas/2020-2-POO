@@ -9,6 +9,7 @@ import br.edu.ifnmg.poo.banco.modelo.Cliente;
 import br.edu.ifnmg.poo.excecoes.ClienteNaoEncontradoException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +32,10 @@ public class ClienteDAO {
         }
         
         return cliente;
+    }
+    
+    public static List<Cliente> buscarTodosClientes(){
+        return new ArrayList<>(clientes.values());
     }
     
 }

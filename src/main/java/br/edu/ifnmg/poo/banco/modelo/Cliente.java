@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author helder
  */
-public abstract class Cliente {
+public abstract class Cliente implements Comparable<Cliente>{
     private String nome;
     private String senha;
     
@@ -53,6 +53,10 @@ public abstract class Cliente {
         return true;
     }
     
+    @Override
+    public int compareTo(Cliente cliente){
+        return this.getNome().compareToIgnoreCase(cliente.getNome()) * -1;
+    }
     
     
     

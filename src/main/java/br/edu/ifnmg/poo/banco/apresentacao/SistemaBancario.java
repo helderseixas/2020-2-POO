@@ -14,6 +14,9 @@ import br.edu.ifnmg.poo.banco.modelo.ContaCorrente;
 import br.edu.ifnmg.poo.banco.modelo.PessoaFisica;
 import br.edu.ifnmg.poo.excecoes.ClienteNaoEncontradoException;
 import br.edu.ifnmg.poo.excecoes.NegocioException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +36,8 @@ public class SistemaBancario {
                 System.out.println("Operação: ");
                 System.out.println("1 - Cadastrar cliente");
                 System.out.println("2 - Cadastrar conta");
-                System.out.println("3 - Autenticar conta");            
+                System.out.println("3 - Autenticar conta");
+                System.out.println("4 - Listar clientes");
                 System.out.println("0 - Sair");
                 System.out.println("Informe a operação: ");
 
@@ -45,6 +49,8 @@ public class SistemaBancario {
                     cadastrarConta(scanner);
                 }else if(operacao == 3){
                     autenticarConta(scanner);
+                }else if(operacao == 4){
+                    listarClientes();
                 }
             }catch(NumberFormatException e){
                 System.out.println("\nValor inválido! Tente novamente.");
@@ -95,7 +101,7 @@ public class SistemaBancario {
         System.out.println("\nCadastro de Contar Corrente (C) ou Conta Poupanca (P): ");
         char tipoConta = scanner.nextLine().charAt(0);
         
-        Cliente cliente = null;
+        Cliente cliente = null;                
         
         System.out.println("Nome do cliente: ");
         String nomeCliente = scanner.nextLine();
@@ -133,6 +139,46 @@ public class SistemaBancario {
         System.out.printf("Conta autenticada: número %s - cliente %s", 
                 contaAutenticada.getNumero(), 
                 contaAutenticada.getCliente().getNome());
+    }
+
+    private static void listarClientes() {
+        System.out.println("\n***Clientes cadastrados***");
+        
+        ClienteControlador clienteControlador = new ClienteControlador();        
+        List<Cliente> clientes = clienteControlador.buscarTodosClientes();
+        
+        // Ordenação utilizando classe interna
+//        OrdenadorCliente ordenadorCliente = new OrdenadorCliente();        
+//        Collections.sort(clientes, ordenadorCliente);
+
+        //Ordenação utilizando lambda        
+//        Collections.sort(clientes, (cliente1, cliente2) -> 
+//                cliente1.getNome().compareToIgnoreCase(cliente2.getNome()));
+        
+        //Ordenação utilizando classe anônima 
+//        Collections.sort(clientes, new Comparator<Cliente>(){
+//            @Override
+//            public int compare(Cliente cliente1, Cliente cliente2) {
+//                return cliente1.getNome().compareToIgnoreCase(cliente2.getNome());
+//            }
+//            
+//        });
+
+        //Ordenação definida na entidade
+        Collections.sort(clientes);
+        
+        for(Cliente cliente : clientes){
+            System.out.println(cliente.getNome());
+        }
+    }
+    
+    private static class OrdenadorCliente implements Comparator<Cliente>{
+
+        @Override
+        public int compare(Cliente cliente1, Cliente cliente2) {
+            return cliente1.getNome().compareToIgnoreCase(cliente2.getNome());
+        }
+        
     }
     
 }

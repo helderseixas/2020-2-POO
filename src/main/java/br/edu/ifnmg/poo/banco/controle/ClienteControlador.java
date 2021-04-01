@@ -8,6 +8,7 @@ package br.edu.ifnmg.poo.banco.controle;
 import br.edu.ifnmg.poo.banco.dados.ClienteDAO;
 import br.edu.ifnmg.poo.banco.modelo.Cliente;
 import br.edu.ifnmg.poo.excecoes.ClienteNaoEncontradoException;
+import java.util.List;
 
 /**
  *
@@ -21,6 +22,10 @@ public class ClienteControlador {
 
     public Cliente buscarCliente(String nomeCliente) {
         return ClienteDAO.buscarCliente(nomeCliente);
+    }
+    
+    public List<Cliente> buscarTodosClientes(){
+        return ClienteDAO.buscarTodosClientes();
     }
     
 }
